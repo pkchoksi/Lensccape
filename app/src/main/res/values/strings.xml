@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">Lenscape</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="greetings">LensCape</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="prompt_username">Username</string>
+    <string name="prompt_password_again">Password Again</string>
+    <string name="action_sign_in_register"><b>Sign in</b> or register</string>
+    <string name="action_forgot_password">Recover lost password</string>
+    <string name="login_progress_signing_in">Signing in&#8230;</string>
+    <string name="error_intro">"Please "</string>
+    <string name="error_blank_username">enter a username</string>
+    <string name="error_blank_password">enter a password</string>
+    <string name="error_mismatched_passwords">enter the same password twice</string>
+    <string name="error_join">", and "</string>
+    <string name="error_end">.</string>
+    <!--Strings related to settings-->
+    <string name="action_settings">Settings</string>
+    <string name="title_note_list">Notes</string>
+    <string name="title_note_detail">Note Detail</string>
+    <string name="title_activity_notes">NotesActivity</string>
+    <string name="all_deleted">All notes deleted</string>
+    <string name="are_you_sure">Are You Sure?</string>
+    <string name="title_activity_editor">EditorActivity</string>
+    <string name="new_note">New note</string>
+    <string name="title_activity_user">UserActivity</string>
+    <string name="notesUpdated">Note Updated</string>
+    <string name="action_delete">Delete</string>
+    <string name="note_deleted">note deleted</string>
+    <string name="enterNote">Enter Note Here</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+
+
+    <string name="login_activity_label">Sinch Messaging Tutorial</string>
+    <string name="message_elipses">Message...</string>
+    <string name="parse_app_id">rlagPH4b27SVYmNwra3opJcf0aIkKwE0vo328HDd</string>
+    <string name="parse_app_key">sZETF65XDBi7ygY91PM73wMvtV5WOvWdoIDA5FVv</string>
+    <string name="password_retype">Retype Password</string>
+    <string name="signup">Sign Up</string>
+    <string name="title_activity_dispatch">DispatchActivity</string>
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="userFirstname">Enter first name</string>
+    <string name="userLastName">Enter last name</string>
+
+</resources>
