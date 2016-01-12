@@ -55,5 +55,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="userFirstname">Enter first name</string>
     <string name="userLastName">Enter last name</string>
+    <string name="phonenumberprompt">Enter Your Phone Number</string>
+    <string name="title_activity_list_users">ListUsersActivity</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_another_user">AnotherUserActivity</string>
 
 </resources>

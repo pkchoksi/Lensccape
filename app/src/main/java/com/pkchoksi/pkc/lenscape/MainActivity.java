@@ -3,10 +3,10 @@ package com.pkchoksi.pkc.lenscape;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
@@ -15,14 +15,15 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.parse.ParseUser;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity {
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
-
+    private CustomPicturesAdapter mainAdapter;
+    private ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        setTitle("LensCape");
 
+      listView = (ListView) findViewById(R.id.list);
+       mainAdapter = new CustomPicturesAdapter(this, Pictures.class);
+        listView.setAdapter(mainAdapter);
+        mainAdapter.loadObjects();
 
 
     }
@@ -58,14 +64,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(this, "Not Created Yet", Toast.LENGTH_LONG).show();
             return true;
         }
-        if(id == R.id.action_profile){
-            Toast.makeText(this, "Not Created Yet", Toast.LENGTH_LONG).show();
+        if(id == R.id.action_users){
+            Intent intent2 = new Intent(this, ListUsersActivity.class);
+            this.startActivity(intent2);
             return true;
         }
         if(id == R.id.action_logout){
             ParseUser.getCurrentUser().logOut();
             startActivity(new Intent(MainActivity.this, DispatchActivity.class));
             return true;
+        }
+        if(id == R.id.action_profile){
+            Intent intent3 = new Intent(this, ProfileActivity.class);
+            startActivity(intent3);
         }
 
         return super.onOptionsItemSelected(item);
@@ -78,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
    @Override
     public void onStart() {
         super.onStart();
-
+        updatePicture();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
@@ -98,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onStop() {
         super.onStop();
-
+        updatePicture();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         Action viewAction = Action.newAction(
@@ -114,9 +125,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
     }
-
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        return false;
+    private void updatePicture() {
+        mainAdapter.loadObjects();
+        listView.setAdapter(mainAdapter);
     }
+
+
 }

@@ -21,7 +21,7 @@ public class SignupActivity extends AppCompatActivity{
     private EditText passwordView;
     private EditText passwordAgainView;
     private EditText emailView;
-
+    private EditText phnumberView;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -35,6 +35,7 @@ public class SignupActivity extends AppCompatActivity{
                passwordView = (EditText) findViewById(R.id.password_edit_text);
                passwordAgainView = (EditText) findViewById(R.id.password_again_edit_text);
                emailView = (EditText) findViewById(R.id.email_edit_text);
+               phnumberView = (EditText) findViewById(R.id.phonenumber_edit_text);
 
 
                // Set up the submit button click handler
@@ -52,6 +53,10 @@ public class SignupActivity extends AppCompatActivity{
                        if(isEmpty(emailView)){
                            validationError = true;
                            validationErrorMessage.append("enter an email");
+                       }
+                       if(isEmpty(phnumberView)){
+                           validationError = true;
+                           validationErrorMessage.append("enter your phone number");
                        }
                        if (isEmpty(passwordView)) {
                            if (validationError) {
@@ -88,6 +93,7 @@ public class SignupActivity extends AppCompatActivity{
                        user.setUsername(usernameView.getText().toString());
                        user.setPassword(passwordView.getText().toString());
                        user.setEmail(emailView.getText().toString());
+                       user.put("phone", phnumberView.getText().toString());
                        // Call the Parse signup method
                        user.signUpInBackground(new SignUpCallback() {
 

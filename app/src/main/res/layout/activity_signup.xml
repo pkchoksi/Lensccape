@@ -56,6 +56,15 @@
                 android:singleLine="true"
                 android:maxLength="30"
                     />
+            <EditText
+                android:id="@+id/phonenumber_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/phonenumberprompt"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:textColor="@color/sinch_purple"
+                android:singleLine="true" />
 
             <Button
                 android:id="@+id/action_button"

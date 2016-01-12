@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.pkchoksi.pkc.lenscape.ProfileActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/buttonCamera"
+        android:layout_gravity="bottom|center"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_menu_camera" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_gravity="top"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        />
+
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/linview"
+        >
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="User"
+            android:layout_marginTop="90dp"
+            android:src="@drawable/ic_menu_camera"
+            android:id="@+id/imageView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/userName_text"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:text="Name"
+            android:layout_alignTop="@+id/imageView"
+            android:layout_alignBottom="@+id/imageView"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/imageView"
+            android:layout_toEndOf="@+id/imageView" />
+
+        <GridView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/picgridView"
+            android:columnWidth="100dp"
+            android:numColumns="auto_fit"
+            android:stretchMode="columnWidth"
+            android:layout_below="@+id/userName_text"
+            android:background="#ffffff"
+            android:verticalSpacing="5dp"
+            android:horizontalSpacing="5dp"
+            android:layout_gravity="center_horizontal|bottom" />
+    </RelativeLayout>
+
+
+
+
+</FrameLayout>
