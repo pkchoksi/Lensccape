@@ -1,5 +1,6 @@
 package com.pkchoksi.pkc.lenscape;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -74,8 +75,10 @@ public class ListUsersActivity extends AppCompatActivity {
         query.findInBackground(new FindCallback<ParseUser>() {
             public void done(List<ParseUser> user, ParseException e) {
                 if (e == null) {
-                    //start the messaging activity
-
+                    //start the profile activity
+                    Intent intent = new Intent(getApplicationContext(), AnotherUserActivity.class);
+                    intent.putExtra("username",user.get(0).getObjectId());
+                    startActivity(intent);
 
                 } else {
                     Toast.makeText(getApplicationContext(),

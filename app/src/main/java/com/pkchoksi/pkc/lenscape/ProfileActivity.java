@@ -29,10 +29,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.buttonCamera);
 
-        Name = ParseUser.getCurrentUser().toString();
+        Name = ParseUser.getCurrentUser().getObjectId();
         userText = (TextView) findViewById(R.id.userName_text);
         userText.setText(ParseUser.getCurrentUser().getUsername());
-
         picGrid = (GridView) findViewById(R.id.picgridView);
         customAdapter = new CustomPicProfileAdapter(this,Pictures.class,Name);
 

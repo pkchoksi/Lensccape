@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
         setTitle("LensCape");
 
+
       listView = (ListView) findViewById(R.id.list);
        mainAdapter = new CustomPicturesAdapter(this, Pictures.class);
         listView.setAdapter(mainAdapter);
@@ -129,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
         mainAdapter.loadObjects();
         listView.setAdapter(mainAdapter);
     }
+
 
 
 }

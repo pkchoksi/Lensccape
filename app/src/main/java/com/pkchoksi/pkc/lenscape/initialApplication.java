@@ -13,7 +13,9 @@ public class initialApplication extends Application {
         super.onCreate();
 
         Parse.enableLocalDatastore(this);
-        Parse.initialize(this, getString(R.string.parse_app_id), getString(R.string.parse_app_key));
         ParseObject.registerSubclass(Pictures.class);
+        ParseObject.registerSubclass(Follow.class);
+        Parse.initialize(this, getString(R.string.parse_app_id), getString(R.string.parse_app_key));
+
     }
 }

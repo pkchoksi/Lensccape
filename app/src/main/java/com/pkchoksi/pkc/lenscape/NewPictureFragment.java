@@ -83,7 +83,7 @@ public class NewPictureFragment extends android.app.Fragment {
                 // If the user added a photo, that data will be
                 // added in the CameraFragment
 
-                // Save the meal and return
+                // Save the picture
                 picture.saveInBackground(new SaveCallback() {
 
                     @Override
