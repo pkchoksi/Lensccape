@@ -118,18 +118,10 @@ public class SignupActivity extends AppCompatActivity{
 
 
     private boolean isEmpty(EditText etText) {
-               if (etText.getText().toString().trim().length() > 0) {
-                   return false;
-               } else {
-                   return true;
-               }
+        return etText.getText().toString().trim().length() <= 0;
            }
 
            private boolean isMatching(EditText etText1, EditText etText2) {
-               if (etText1.getText().toString().equals(etText2.getText().toString())) {
-                   return true;
-               } else {
-                   return false;
-               }
+               return etText1.getText().toString().equals(etText2.getText().toString());
            }
 }

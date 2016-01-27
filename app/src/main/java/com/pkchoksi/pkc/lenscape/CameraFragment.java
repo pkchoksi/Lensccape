@@ -152,7 +152,6 @@ public class CameraFragment extends android.app.Fragment {
         ((NewPictureActivity) getActivity()).getCurrentpicture().setPhotoFile(
                 photoFile);
 
-
         FragmentManager fm = getActivity().getFragmentManager();
         fm.popBackStack("NewPictureFragment",
                 FragmentManager.POP_BACK_STACK_INCLUSIVE);

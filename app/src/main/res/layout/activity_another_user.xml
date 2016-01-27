@@ -69,8 +69,9 @@
 
         <ImageButton
             android:layout_width="wrap_content"
-            android:id="@+id/followbutton"
+            android:id="@+id/followbutton2"
             android:layout_height="wrap_content"
+            android:clickable="true"
             android:src="@drawable/ic_menu_gallery"
             android:layout_alignTop="@+id/userName_text_another1"
             android:layout_toRightOf="@+id/userName_text_another1"

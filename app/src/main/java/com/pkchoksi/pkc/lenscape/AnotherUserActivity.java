@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -16,7 +18,6 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AnotherUserActivity extends AppCompatActivity {
@@ -27,22 +28,19 @@ public class AnotherUserActivity extends AppCompatActivity {
     private String userid;
     private String username;
     private ImageButton followB;
-    private ArrayList<ParseObject> friends;
+    private Follow follow;
 
-    public static ParseObject follow = new ParseObject("follow");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_another_user);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
+        follow = new Follow();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
         userText = (TextView) findViewById(R.id.userName_text_another1);
-        followB = (ImageButton) findViewById(R.id.followbutton);
+        followB = (ImageButton) findViewById(R.id.followbutton2);
         Intent intent;
         intent = getIntent();
         picGrid = (GridView) findViewById(R.id.picgridView_another1);
@@ -58,7 +56,7 @@ public class AnotherUserActivity extends AppCompatActivity {
                 }
             }
         });
-        friends = new ArrayList<ParseObject>();
+
 
 
         //UserId = query.get("objectId");
@@ -69,29 +67,45 @@ public class AnotherUserActivity extends AppCompatActivity {
         followB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //final ParseQuery<Follow> query2 = ParseQuery.getQuery(Follow.class);
-
-                final ParseQuery query2 = ParseUser.getQuery();
-                //final Follow follow = new Follow();
-                //follow.setfrom(ParseUser.getCurrentUser());
-                //ParseQuery queryuser = ParseUser.getQuery();
-                //queryuser.whereEqualTo("objectId", userid);
-                //queryuser.findInBackground(new FindCallback<ParseUser>() {
-                //@Override
-                // public void done(List<ParseUser> user, ParseException e) {
-                //    follow.setto(user.get(0));
 
 
-                follow.put("from", ParseUser.getCurrentUser());
-                query2.whereEqualTo("objectId",userid);
-                query2.findInBackground(new FindCallback<ParseUser>() {
-                    @Override
-                    public void done(List<ParseUser> objects, ParseException e) {
-                        follow.put("to", objects.get(0));
-                    }
+                final ParseQuery query = ParseUser.getQuery().whereEqualTo("objectId", userid);
+               query.findInBackground(new FindCallback<ParseUser>() {
+                   public void done(List<ParseUser> user, ParseException e) {
+                       if(e == null && user != null){
+                           final ParseUser name = user.get(0);
 
+                           ParseQuery queryFollow = ParseQuery.getQuery("follow");
+                           queryFollow.whereMatchesQuery("to",query);
+                           queryFollow.findInBackground(new FindCallback<ParseObject>() {
+                               @Override
+                               public void done(List<ParseObject> objects, ParseException e) {
+                                   if (objects.size() != 0 && e == null) {
+                                       Log.d(objects.toString(),"This is the object");
+                                       if ((objects.get(0).get("to") == name) && (objects.get(0).get("from") == ParseUser.getCurrentUser())) {
 
-                });
+                                           Toast.makeText(getApplicationContext(), "You are already following: " + name.getUsername(), Toast.LENGTH_LONG).show();
+                                       }
+                                   }
+                                   else {
+                                       follow.setfrom(ParseUser.getCurrentUser());
+                                       follow.setto(name);
+                                       follow.saveInBackground();
+                                       Toast.makeText(getApplicationContext(), "You are now following "+name.getUsername() , Toast.LENGTH_LONG).show();
+                                   }
+                               }
+                           });
+
+                           //ParseUser.getCurrentUser().put("friends", Arrays.asList(friends));
+
+                       }
+                       else {
+                           Toast.makeText(getApplicationContext(),"Error saving the user",Toast.LENGTH_LONG).show();
+                       }
+                   }
+
+               });
+
 
             }
         });
@@ -115,7 +129,6 @@ public class AnotherUserActivity extends AppCompatActivity {
 
 
 
-    public void isFreinds(ParseUser user1, ParseUser user2, Boolean isTrue){
 
-    }
+
 }

@@ -13,13 +13,13 @@ public class SignupOrLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
         setContentView(R.layout.activity_signuporlogin);
-        ((Button) findViewById(R.id.login)).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Starts an intent of the log in activity
                 startActivity(new Intent(SignupOrLoginActivity.this, LoginActivity.class));
             }
         });
-        ((Button) findViewById(R.id.signup)).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.signup).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Starts an intent for the sign up activity
                 startActivity(new Intent(SignupOrLoginActivity.this, SignupActivity.class));

@@ -88,13 +88,22 @@
         </activity>
         <activity android:name=".NewPictureActivity" />
         <activity
+            android:name=".Settings"
+            android:label="Settings"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.pkchoksi.pkc.lenscape.MainActivity" />
+        </activity>
+        <activity
             android:name=".AnotherUserActivity"
             android:label="@string/title_activity_another_user"
-            android:parentActivityName=".ProfileActivity"
+            android:parentActivityName=".ListUsersActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.pkchoksi.pkc.lenscape.ProfileActivity" />
+                android:value="com.pkchoksi.pkc.lenscape.ListUsersActivity" />
         </activity>
     </application>
 

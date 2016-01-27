@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -24,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     private GoogleApiClient client;
     private CustomPicturesAdapter mainAdapter;
     private ListView listView;
+    private Follow follow;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +34,12 @@ public class MainActivity extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
         setTitle("LensCape");
+        follow = new Follow();
+
 
 
       listView = (ListView) findViewById(R.id.list);
+
        mainAdapter = new CustomPicturesAdapter(this, Pictures.class);
         listView.setAdapter(mainAdapter);
         mainAdapter.loadObjects();
@@ -62,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.action_settings) {
-            Toast.makeText(this, "Not Created Yet", Toast.LENGTH_LONG).show();
+           Intent intent = new Intent(this, Settings.class);
+            startActivity(intent);
             return true;
         }
         if(id == R.id.action_users){
@@ -126,10 +132,21 @@ public class MainActivity extends AppCompatActivity {
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
     }
+    @Override
+    public void onBackPressed(){
+
+            finish();
+
+    }
     private void updatePicture() {
         mainAdapter.loadObjects();
         listView.setAdapter(mainAdapter);
     }
+
+    public Follow getcurrentfollowers(){
+        return follow;
+    }
+
 
 
 
