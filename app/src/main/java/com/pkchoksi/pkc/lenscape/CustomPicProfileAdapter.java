@@ -44,9 +44,12 @@ public class CustomPicProfileAdapter extends ParseQueryAdapter<Pictures> {
         // Add and download the image
         ParseImageView mainFeedImage = (ParseImageView) v.findViewById(R.id.icon2);
         ParseFile imageFile = object.getPhotoFile();
+
         if (imageFile != null) {
+
             mainFeedImage.setParseFile(imageFile);
             mainFeedImage.loadInBackground();
+            mainFeedImage.destroyDrawingCache();
         }
 
         // Add the title view

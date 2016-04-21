@@ -26,4 +26,10 @@ public class Follow extends ParseObject{
     public void setto(ParseUser user) {
         put("to", user);
     }
+    public Boolean getisFriends(){
+        return getBoolean("isFriends");
+    }
+    public void setisFriends(Boolean friends){
+        put("isFriends",friends);
+    }
 }

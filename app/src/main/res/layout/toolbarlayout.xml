@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbarBottom"
+    android:layout_width="match_parent"
+    app:contentInsetLeft="0dp"
+    app:contentInsetStart="0dp"
+    android:layout_height="?actionBarSize"
+    android:layout_gravity="bottom"
+    android:background="@color/colorPrimary"
+    android:visibility="visible">
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@android:color/white"
+
+
+        >
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:fitsSystemWindows="true"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/profilebutton"
+            style="@style/navbar_button"
+            android:drawableTop="@drawable/reprof"
+            android:background="#594653"
+            android:focusable="false"
+
+            />
+
+        <RadioButton
+            android:id="@+id/usersButton"
+            style="@style/navbar_button"
+            android:drawableTop="@drawable/re_group"
+            android:background="#594653"
+            />
+
+        <RadioButton
+            android:id="@+id/cameraButton"
+            style="@style/navbar_button"
+            android:background="#594653"
+            android:drawableTop="@drawable/recam" />
+
+        <RadioButton
+            style="@style/navbar_button"
+            android:id="@+id/settingsButton"
+            android:background="#594653"
+            android:drawableTop="@drawable/rehome"
+            />
+
+        <RadioButton
+            style="@style/navbar_button"
+            android:id="@+id/contactsButton"
+            android:background="#594653"
+            android:drawableTop="@drawable/re_launcher" />
+        </RadioGroup>
+    </RelativeLayout>
+</android.support.v7.widget.Toolbar>
+
+

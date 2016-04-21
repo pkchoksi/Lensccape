@@ -1,83 +1,177 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+
     tools:context=".SignUpActivity" >
 
     <!-- Login form -->
 
-    <ScrollView
-        android:id="@+id/signup_form"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
 
-        <LinearLayout
-            style="@style/LoginFormContainer"
+
+
+
+        <RelativeLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:background="#cdd9d9"
             android:orientation="vertical"
             android:textColor="@color/sinch_purple">
 
+            <include layout="@layout/toolbarfragup"
+                android:id="@+id/include2" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:id="@+id/Welcome"
+                android:layout_below="@+id/include2"
+
+                 />
 
             <EditText
                 android:id="@+id/username_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/username"
+                android:layout_width="190dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/off_white"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:textColor="@color/sinch_purple"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:layout_gravity="right"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
             <EditText
                 android:id="@+id/password_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/prompt_password"
+                android:layout_width="190dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="5dp"
+
+                android:background="@color/off_white"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:layout_gravity="right"
+                android:layout_below="@+id/username_edit_text"
+                android:layout_alignRight="@+id/Welcome"
+                android:layout_alignEnd="@+id/Welcome" />
             
             <EditText
                 android:id="@+id/password_again_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/password_retype"
+                android:layout_width="190dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="5dp"
+
+                android:background="@color/off_white"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:imeActionId="@+id/edittext_action_signup"
                 android:imeActionLabel="@string/signup"
-                android:imeOptions="actionUnspecified" />
+                android:imeOptions="actionUnspecified"
+                android:layout_gravity="right"
+                android:layout_below="@+id/password_edit_text"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
             <EditText
                 android:id="@+id/email_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Email"
+                android:layout_width="190dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="40dp"
+                android:background="@color/off_white"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:maxLength="30"
-                    />
+                android:layout_gravity="right"
+                android:layout_below="@+id/password_again_edit_text"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
             <EditText
                 android:id="@+id/phonenumber_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/phonenumberprompt"
+                android:layout_marginBottom="5dp"
+                android:layout_width="190dp"
+                android:layout_height="40dp"
+                android:background="@color/off_white"
                 android:inputType="phone"
                 android:maxLines="1"
                 android:textColor="@color/sinch_purple"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:layout_gravity="right"
+                android:layout_below="@+id/email_edit_text"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/action_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/inputbox"
-                android:layout_gravity="end"
-                android:layout_marginTop="16dp"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
                 android:textColor="@color/sinch_purple"
                 android:paddingLeft="32dp"
                 android:paddingRight="32dp"
-                android:text="@string/signup" />
-        </LinearLayout>
-    </ScrollView>
+                android:text="@string/signup"
+                android:layout_below="@+id/phonenumber_edit_text"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Enter email"
+                android:paddingLeft="5dp"
+                android:textSize="25dp"
+                android:id="@+id/textemail"
+                android:layout_alignTop="@+id/phonenumber_edit_text"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Enter Phone"
+                android:id="@+id/textphone"
+                android:paddingLeft="5dp"
+                android:textSize="25dp"
+                android:layout_alignTop="@+id/email_edit_text"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:text="Re-Enter Pass"
+                android:paddingLeft="5dp"
+                android:textSize="25dp"
+                android:id="@+id/textretypepass"
+                android:layout_below="@+id/password_edit_text"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:textSize="25dp"
+                android:text="Enter Password"
+                android:id="@+id/textpass"
+                android:layout_below="@+id/username_edit_text"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:textSize="25dp"
+                android:text="Enter username"
+                android:id="@+id/textusername"
+                android:layout_alignTop="@+id/username_edit_text"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
+
 
 </merge>

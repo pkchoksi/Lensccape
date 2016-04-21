@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include layout="@layout/image_grid"
+        android:layout_height="400dp"
+        android:id="@+id/image_grid"
+        android:layout_width="400dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image_grid"
+        android:id="@+id/lineartext">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/toolbar_customeadapter"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/captiontext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="Testing"
+                android:textStyle="italic"
+                android:textSize="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/sinch_purple" />
+
+
+            <TextView
+                android:id="@+id/timestamp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/captiontext"
+                android:text="testing"/>
+
+        </android.support.v7.widget.Toolbar>
+    </LinearLayout>
+
+</RelativeLayout>

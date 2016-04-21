@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/newCamera"
+    android:layout_height="match_parent"
+    tools:context=".NewCameraActivity">
+    <include layout="@layout/toolbarfragup"
+        android:id="@+id/include" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/include"
+        android:layout_above="@+id/pictureTitle" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_menu_camera"
+        android:onClick="requestForCameraPermission"
+        android:layout_above="@+id/Done"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/button7" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:id="@+id/Done"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/button7"
+        android:layout_alignEnd="@+id/button7"
+        android:layout_marginRight="48dp"
+        android:layout_marginEnd="48dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/pictureTitle"
+        android:hint="Enter a title for the picture"
+        android:maxLines="1"
+        android:maxLength="25"
+        android:layout_above="@+id/button7"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="profile"
+        android:id="@+id/buttonProfile"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/button7"
+        android:layout_alignStart="@+id/button7"
+        android:layout_marginLeft="48dp"
+        android:layout_marginStart="48dp" />
+
+</RelativeLayout>

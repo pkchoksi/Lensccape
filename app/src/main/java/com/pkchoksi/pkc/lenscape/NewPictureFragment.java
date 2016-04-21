@@ -2,6 +2,7 @@ package com.pkchoksi.pkc.lenscape;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
@@ -20,7 +21,6 @@ import com.parse.ParseFile;
 import com.parse.ParseImageView;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-
 /**
  * Created by pkcho on 1/8/2016.
  */
@@ -31,6 +31,8 @@ public class NewPictureFragment extends android.app.Fragment {
     private Button cancelButton;
     private EditText picName;
     private ParseImageView picPreview;
+    private Button saveasprofile;
+
     //ParseGeoPoint userLocation = new ParseGeoPoint();
 
     public void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class NewPictureFragment extends android.app.Fragment {
 
     }
 
-    public View onCreateView(LayoutInflater inflater,  ViewGroup parent,
+    public View onCreateView(LayoutInflater inflater,  final ViewGroup parent,
                              Bundle SavedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_new_picture, parent, false);
 
@@ -64,12 +66,30 @@ public class NewPictureFragment extends android.app.Fragment {
             }
         });
 
+        saveasprofile = (Button)v.findViewById(R.id.saveasprofile);
+        saveasprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Pictures propic = ((NewPictureActivity) getActivity()).getCurrentpicture();
+                ParseUser user = ParseUser.getCurrentUser();
+                user.put("Images", propic);
+                user.saveInBackground();
+                HomePageFragment fragment = new HomePageFragment();
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.container, fragment);
+                ft.addToBackStack(null);
+                ft.commit();
+
+            }
+        });
         saveButton = ((Button) v.findViewById(R.id.save_button));
         saveButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Pictures picture = ((NewPictureActivity) getActivity()).getCurrentpicture();
+
                 // When the user clicks "Save," upload the meal to Parse
                 // Add data to the meal object:
                 picture.setTitle(picName.getText().toString());

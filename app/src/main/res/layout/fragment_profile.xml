@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ProfilePagefragment">
+
+    <include layout="@layout/toolbarlayout"
+        android:layout_height="?actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        />
+
+
+
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linview"
+        >
+        <include layout="@layout/toolbarfragup"
+            android:id="@+id/toolbarFrag"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="User"
+            android:src="@drawable/ic_menu_camera"
+            android:id="@+id/proimageView"
+
+            android:layout_below="@+id/toolbarFrag"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/userName_text"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:text="Name"
+            android:layout_below="@+id/proimageView"
+            android:layout_centerHorizontal="true" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/picgridView"
+            android:layout_below="@+id/userName_text"
+            android:background="#ffffff"
+            android:gravity="center"
+             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Followers"
+            android:textSize="20dp"
+            android:id="@+id/followers"
+            android:gravity="right"
+            android:layout_alignTop="@+id/following"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="23dp"
+            android:layout_marginEnd="23dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Following"
+            android:id="@+id/following"
+            android:textSize="20dp"
+            android:layout_above="@+id/userName_text"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="31dp"
+            android:layout_marginStart="31dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="0"
+            android:textSize="20dp"
+            android:id="@+id/followincon"
+            android:layout_alignTop="@+id/followercon"
+            android:layout_alignLeft="@+id/following"
+            android:layout_alignStart="@+id/following"
+            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="0"
+            android:id="@+id/followercon"
+            android:layout_marginBottom="25dp"
+            android:layout_above="@+id/followers"
+            android:layout_alignRight="@+id/followers"
+            android:layout_alignEnd="@+id/followers"
+            android:layout_marginRight="25dp"
+            android:layout_marginEnd="25dp" />
+
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

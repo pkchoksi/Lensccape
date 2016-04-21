@@ -12,7 +12,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.parse.ParseFile;
@@ -20,7 +20,6 @@ import com.parse.SaveCallback;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by pkcho on 1/8/2016.
@@ -33,18 +32,21 @@ public class CameraFragment extends android.app.Fragment {
     private Camera camera;
     private SurfaceView surfaceView;
     private ParseFile photoFile;
-    private ImageButton photoButton;
-    ArrayList<ParseFile> Images = new ArrayList<ParseFile>();
+    private ImageView photoButton;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_camera, parent, false);
-        photoButton = (ImageButton) v.findViewById(R.id.camera_photo_button);
+        photoButton = (ImageView) v.findViewById(R.id.camera_photo_button);
 
         if (camera == null) {
             try {
                 camera = android.hardware.Camera.open() ;
+                Camera.Parameters params = camera.getParameters();
+                params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+                camera.setParameters(params);
+
                 photoButton.setEnabled(true);
             } catch (Exception e) {
                 Log.e(TAG, "No camera with exception: " + e.getMessage());
@@ -53,6 +55,7 @@ public class CameraFragment extends android.app.Fragment {
                         Toast.LENGTH_LONG).show();
             }
         }
+
 
         photoButton.setOnClickListener(new View.OnClickListener() {
 
@@ -80,6 +83,7 @@ public class CameraFragment extends android.app.Fragment {
         });
         surfaceView = (SurfaceView) v.findViewById(R.id.camera_surface_view);
         SurfaceHolder holder = surfaceView.getHolder();
+
 
         holder.addCallback(new SurfaceHolder.Callback() {
 
@@ -112,13 +116,13 @@ public class CameraFragment extends android.app.Fragment {
 
         // Resize photo from camera byte array
         Bitmap imageProfile = BitmapFactory.decodeByteArray(data, 0, data.length);
-        Bitmap imageProfileScaled = Bitmap.createScaledBitmap(imageProfile, 500, 500
+        final Bitmap imageProfileScaled = Bitmap.createScaledBitmap(imageProfile, 500, 500
                 * imageProfile.getHeight() / imageProfile.getWidth(), false);
 
         // Override Android default landscape orientation and save portrait
         Matrix matrix = new Matrix();
         matrix.postRotate(90);
-        Bitmap rotatedScaledprofileImage = Bitmap.createBitmap(imageProfileScaled, 0,
+        final Bitmap rotatedScaledprofileImage = Bitmap.createBitmap(imageProfileScaled, 0,
                 0, imageProfileScaled.getWidth(), imageProfileScaled.getHeight(),
                 matrix, true);
 
@@ -127,6 +131,7 @@ public class CameraFragment extends android.app.Fragment {
 
 
         byte[] scaledData = bos.toByteArray();
+
 
 
         // Save the scaled image to Parse
@@ -141,6 +146,7 @@ public class CameraFragment extends android.app.Fragment {
                             Toast.LENGTH_LONG).show();
                 } else {
                     addPhoto(photoFile);
+                    imageProfileScaled.recycle();
                 }
             }
 

@@ -22,5 +22,20 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">16dp</item>
     </style>
+    android:style="@style/mystyle"
+
+    <style name="mystyle">
+        <item name="android:layout_marginTop">10dp</item>
+        ... other things that your elements have in common
+    </style>
+    <style name="navbar_button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">@color/off_white</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">12dp</item>
+    </style>
 
 </resources>

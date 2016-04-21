@@ -11,7 +11,7 @@ import android.widget.TextView;
 /**
  * Created by pkcho on 12/24/2015.
  */
-public class NotesCursorAdaptor extends CursorAdapter {
+    public class NotesCursorAdaptor extends CursorAdapter {
     public NotesCursorAdaptor(Context context, Cursor c, int flags) {
         super(context, c, flags);
     }

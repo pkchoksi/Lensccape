@@ -1,17 +1,19 @@
 package com.pkchoksi.pkc.lenscape;
 
+import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListView;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.parse.ParseUser;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,27 +24,30 @@ public class MainActivity extends AppCompatActivity {
      */
     private GoogleApiClient client;
     private CustomPicturesAdapter mainAdapter;
-    private ListView listView;
-    private Follow follow;
+    private Toolbar toolbar;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-        setTitle("LensCape");
-        follow = new Follow();
+        setTitle("");
 
 
 
-      listView = (ListView) findViewById(R.id.list);
 
-       mainAdapter = new CustomPicturesAdapter(this, Pictures.class);
-        listView.setAdapter(mainAdapter);
-        mainAdapter.loadObjects();
+
+        
+
+        HomePageFragment firstFragment = new HomePageFragment();
+        FragmentManager fm1 = getFragmentManager();
+        fm1.beginTransaction().add(R.id.container, firstFragment).addToBackStack(null).commit();
+
 
 
     }
@@ -59,32 +64,25 @@ public class MainActivity extends AppCompatActivity {
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
+/*
         if (id == R.id.action_notes) {
             Intent intent1 = new Intent(this,NotesActivity.class);
             this.startActivity(intent1);
+
             return true;
         }
 
         if (id == R.id.action_settings) {
-           Intent intent = new Intent(this, Settings.class);
-            startActivity(intent);
-            return true;
+           Settingsfragment fragment6 = new Settingsfragment();
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.container, fragment6);
+            ft.addToBackStack(null);
+            ft.commit();
         }
-        if(id == R.id.action_users){
-            Intent intent2 = new Intent(this, ListUsersActivity.class);
-            this.startActivity(intent2);
-            return true;
-        }
-        if(id == R.id.action_logout){
-            ParseUser.getCurrentUser().logOut();
-            startActivity(new Intent(MainActivity.this, DispatchActivity.class));
-            return true;
-        }
-        if(id == R.id.action_profile){
-            Intent intent3 = new Intent(this, ProfileActivity.class);
-            startActivity(intent3);
-        }
+*/
+
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -96,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
    @Override
     public void onStart() {
         super.onStart();
-        updatePicture();
+
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
@@ -116,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStop() {
         super.onStop();
-        updatePicture();
+
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         Action viewAction = Action.newAction(
@@ -133,21 +131,27 @@ public class MainActivity extends AppCompatActivity {
         client.disconnect();
     }
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
+        if(getFragmentManager().getBackStackEntryCount() <= 1) {
+            // finish();
+            new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Exit")
+                    .setMessage("Are you sure you want to exit?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent a = new Intent(Intent.ACTION_MAIN);
+                            a.addCategory(Intent.CATEGORY_HOME);
+                            a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(a);
+                            // finish();
 
-            finish();
+                        }
+                    }).setNegativeButton("No", null).show();
+        }
+        else {
+            getFragmentManager().popBackStack();
+        }
 
+        }
     }
-    private void updatePicture() {
-        mainAdapter.loadObjects();
-        listView.setAdapter(mainAdapter);
-    }
 
-    public Follow getcurrentfollowers(){
-        return follow;
-    }
-
-
-
-
-}

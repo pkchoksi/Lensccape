@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.pkchoksi.pkc.lenscape">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
@@ -10,8 +11,14 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-feature android:name="android.hardware.camera" />
-
+    <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera2" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 
     <application
         android:name=".initialApplication"
@@ -19,7 +26,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:screenOrientation="portrait"
+        android:largeHeap="true" >
         <meta-data
             android:name="com.parse.APPLICATION_ID"
             android:value="rlagPH4b27SVYmNwra3opJcf0aIkKwE0vo328HDd" />
@@ -27,7 +35,9 @@
             android:name="com.parse.CLIENT_KEY"
             android:value="sZETF65XDBi7ygY91PM73wMvtV5WOvWdoIDA5FVv" />
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".NotesActivity"
             android:label="@string/title_activity_notes"
@@ -49,6 +59,7 @@
         <activity
             android:name=".EditorActivity"
             android:label="@string/title_activity_editor"
+            android:screenOrientation="portrait"
             android:parentActivityName=".NotesActivity"
             android:theme="@style/AppTheme">
             <meta-data
@@ -58,6 +69,7 @@
         <activity
             android:name=".DispatchActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -65,46 +77,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".SignupOrLoginActivity" />
-        <activity
-            android:name=".ListUsersActivity"
-            android:label="@string/title_activity_list_users"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.pkchoksi.pkc.lenscape.MainActivity" />
-        </activity>
-        <activity
-            android:name=".ProfileActivity"
-            android:label="@string/title_activity_profile"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.pkchoksi.pkc.lenscape.MainActivity" />
-        </activity>
-        <activity android:name=".NewPictureActivity" />
-        <activity
-            android:name=".Settings"
-            android:label="Settings"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.pkchoksi.pkc.lenscape.MainActivity" />
-        </activity>
-        <activity
-            android:name=".AnotherUserActivity"
-            android:label="@string/title_activity_another_user"
-            android:parentActivityName=".ListUsersActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.pkchoksi.pkc.lenscape.ListUsersActivity" />
-        </activity>
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".SignupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".SignupOrLoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+
+
+        <activity android:name=".NewPictureActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".NewCameraActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name="com.desmond.squarecamera.CameraActivity" />
+
     </application>
 
 </manifest>

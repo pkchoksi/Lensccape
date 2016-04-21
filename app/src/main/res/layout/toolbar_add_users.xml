@@ -1,0 +1,17 @@
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="?actionBarSize"
+    android:layout_width="match_parent"
+    android:id="@+id/toolbarAddusers"
+    app:contentInsetLeft="100dp"
+    app:contentInsetStart="320dp"
+    android:layout_gravity="top"
+    android:background="#c28585">
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_action_add"
+        android:id="@+id/addusersButton"
+        android:background="@color/sinch_purple"/>
+</android.support.v7.widget.Toolbar>

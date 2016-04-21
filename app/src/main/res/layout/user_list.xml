@@ -4,6 +4,7 @@
         android:id="@+id/userListItem"
         android:textColor="#ff63029d"
         android:padding="16dp"
+        android:background="@drawable/list_item_selector"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:textSize="20sp" />
