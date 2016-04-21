@@ -5,6 +5,5 @@
     android:layout_height="100dp"
     android:contentDescription="Pictures"
     android:background="@color/off_white"
-    android:src="@drawable/ic_camera"
     android:id="@+id/icon2"
     xmlns:android="http://schemas.android.com/apk/res/android" />

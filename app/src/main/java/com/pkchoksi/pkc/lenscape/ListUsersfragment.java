@@ -92,7 +92,7 @@ public class ListUsersfragment extends Fragment {
             @Override
             public void onClick(View v) {
                 buttonCamera.setBackgroundColor(getResources().getColor(R.color.off_white));
-                startActivityForResult(new Intent(getActivity(), NewPictureActivity.class), 0);
+                startActivityForResult(new Intent(getActivity(), NewCameraActivity.class), 0);
             }
         });
         final RadioButton buttonUsers = (RadioButton) toolbar.findViewById(R.id.contactsButton);

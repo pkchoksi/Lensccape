@@ -19,17 +19,20 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableTop="@drawable/ic_menu_camera"
+        android:drawableTop="@drawable/recam"
+        android:background="@color/off_white"
         android:onClick="requestForCameraPermission"
         android:layout_above="@+id/Done"
         android:layout_centerHorizontal="true"
         android:id="@+id/button7" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="Home"
         android:id="@+id/Done"
+        android:textColor="@color/off_white"
+        android:background="#594653"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/button7"
         android:layout_alignEnd="@+id/button7"
@@ -41,6 +44,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/pictureTitle"
         android:hint="Enter a title for the picture"
+        android:textColorHint="@color/off_white"
+        android:background="#594653"
+        android:textColor="@color/off_white"
         android:maxLines="1"
         android:maxLength="25"
         android:layout_above="@+id/button7"
@@ -49,9 +55,11 @@
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="profile"
+        android:background="#594653"
+        android:textColor="@color/off_white"
         android:id="@+id/buttonProfile"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/button7"
